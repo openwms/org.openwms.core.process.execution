@@ -1,0 +1,45 @@
+/*
+ * Copyright 2005-2025 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.openwms.core.process.execution.spi;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import org.openwms.core.process.execution.api.WorkflowDefinition;
+
+import java.util.List;
+
+/**
+ * A WorkflowFinder is able to lookup and retrieve Workflows.
+ *
+ * @author Heiko Scherrer
+ */
+public interface WorkflowFinder {
+
+    /**
+     * Find and return the BPMN file of a {@link WorkflowDefinition} identified by the given {@code workflowDefinitionKey}.
+     *
+     * @param workflowDefinitionKey The unique key of the WorkflowDefinition
+     * @return The BPMN file resource as a String
+     */
+    @NotBlank String loadProcessFile(@NotBlank String workflowDefinitionKey);
+
+    /**
+     * Find and return all {@link WorkflowDefinition}s.
+     *
+     * @return As a list
+     */
+    @NotNull List<WorkflowDefinition> findAll();
+}

@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.openwms</groupId>
         <artifactId>org.openwms.parent</artifactId>
-        <version>27.2</version>
+        <version>27.7.1</version>
         <relativePath/>
     </parent>
     <artifactId>org.openwms.core.process.execution</artifactId>
@@ -34,13 +34,13 @@
     </developers>
 
     <properties>
-        <activiti-dependencies.version>8.8.0-alpha.7</activiti-dependencies.version>
-        <activiti-spring-boot-starter.version>8.8.0-alpha.7</activiti-spring-boot-starter.version>
-        <camunda.version>7.23.0-alpha3</camunda.version>
+        <activiti-dependencies.version>8.8.0-alpha.156</activiti-dependencies.version>
+        <activiti-spring-boot-starter.version>8.8.0-alpha.156</activiti-spring-boot-starter.version>
+        <camunda.version>7.24.0</camunda.version>
         <core.version>3.0.0</core.version>
-        <flowable.version>6.7.2</flowable.version>
+        <flowable.version>7.2.0</flowable.version>
         <groovy-jsr223.version>3.0.9</groovy-jsr223.version>
-        <spring-cloud-dependencies.version>2024.0.0</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2025.0.0</spring-cloud-dependencies.version>
     </properties>
 
     <reporting>
@@ -405,14 +405,14 @@
 
     <repositories>
         <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Staging Repository</name>
-            <url>https://oss.sonatype.org/content/groups/staging/</url>
+            <id>central-portal-snapshots</id>
+            <name>Central Portal Snapshots</name>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
             <snapshots>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </snapshots>
             <releases>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </releases>
         </repository>
         <repository>
