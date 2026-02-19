@@ -2,6 +2,8 @@ name: 'master_build'
 on:
   push:
     branches: [ master ]
+  schedule:
+    - cron: "0 2 * * *" # Every day at 02:00 to deploy snapshots
 
 env:
   MAVEN_OPTS: -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
@@ -107,10 +109,13 @@ jobs:
     steps:
       - name: Trigger
         run: |
-          curl -X POST https://api.github.com/repos/openwms/org.openwms.tms.routing.lib/dispatches \
+          curl -X POST https://api.github.com/repos/openwms/org.openwms.tms.routing.osip/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u ${{ secrets.GITHUB_TOKEN }} \
+          -H "Authorization: Bearer ${DISPATCH_TOKEN}" \
+          --fail-with-body \
           --data '{"event_type": "Remote Trigger", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+        env:
+          DISPATCH_TOKEN: ${{ secrets.PAT }}
       - uses: actions/checkout@v3
 
   sonar_job:
