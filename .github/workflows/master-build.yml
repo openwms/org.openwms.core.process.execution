@@ -102,14 +102,14 @@ jobs:
         env:
           PUSHKEY: ${{ secrets.GITHUB_TOKEN }}
 
-  trigger_osip_build:
+  trigger_lib_build:
     runs-on: ubuntu-latest
-    name: Trigger OSIP Build
+    name: Trigger Lib Build
     needs: build_job
     steps:
       - name: Trigger
         run: |
-          curl -X POST https://api.github.com/repos/openwms/org.openwms.tms.routing.osip/dispatches \
+          curl -X POST https://api.github.com/repos/openwms/org.openwms.tms.routing.lib/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -H "Authorization: Bearer ${DISPATCH_TOKEN}" \
           --fail-with-body \
